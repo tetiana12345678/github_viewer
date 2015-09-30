@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- ruby -rwebrick -e'WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start' -->
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js">
+    </script>
+    <script src="script.js"></script>
+  </head>
+
+  <body ng-app='githubViewer'>
+    <div ng-controller="MainController">
+      <div>{{ error }}</div>
+      <div>{{ countdown }}</div>
+      <h1>{{ message }}</h1>
+      <form name="searchUser" ng-submit="search(username)" >
+        <input type="search" required placeholder="Username to find" ng-model="username" />
+        <input type="submit" value="Search"/>
+      </form>
+      <div ng-include="'userdetails.html'" ng-show="user"></div>
+    </div>
+  </body>
+</html>
+
