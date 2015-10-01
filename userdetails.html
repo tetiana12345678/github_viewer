@@ -1,11 +1,13 @@
-<p>{{ username }}</p>
-<div>
-  <h3>Name: {{ user.name }}</h3>
-  <h3>Location: {{ user.location }}</h3>
-  <h3>Email: {{ user.email }}</h3>
-  <h3>Public Repos: {{ user.public_repos }}</h3>
-  <h3>Followers: {{ user.followers }}</h3>
-  <h3>Following: {{ user.following }}</h3>
+<div id="userDetails">
+  <p>{{ username }}</p>
+  <div>
+    <h3>Name: {{ user.name }}</h3>
+    <h3>Location: {{ user.location }}</h3>
+    <h3>Email: {{ user.email }}</h3>
+    <h3>Public Repos: {{ user.public_repos }}</h3>
+    <h3>Followers: {{ user.followers }}</h3>
+    <h3>Following: {{ user.following }}</h3>
+  </div>
 </div>
 
 <select ng-model="repoSortOrder">
