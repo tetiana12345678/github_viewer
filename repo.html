@@ -1,0 +1,16 @@
+<h2>{{repo.name}}</h2>
+
+<div>Issues: {{repo.open_issues_count}}</div>
+<div>Fork: {{repo.fork}}</div>
+<div>Clone url: {{repo.ssh_url}}</div>
+<div>
+  <ul>
+    <li ng-repeat="user in repo.contributors">
+      {{user.login}}
+      <div class="image-size">
+        <img ng-src="{{user.avatar_url}}" title="{{user.name}}" alt="{{user.name}}" />
+      </div>
+</div>
+
+<a href="#/main">Back to search</a>
+<a href="#/user/{{repo.owner.login}}">Back to {{repo.owner.login}}</a>

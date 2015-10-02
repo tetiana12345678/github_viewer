@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <!-- ruby -rwebrick -e'WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd).start' -->
-<html>
+<html ng-app="githubViewer">
   <head>
     <link rel="stylesheet" href="style.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js">
     </script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.js">
-        <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="script.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="MainController.js"></script>
+    <script src="UserController.js"></script>
+    <script src="RepoController.js"></script>
     <script src="github.js"></script>
   </head>
 
-  <body ng-app='githubViewer'>
-    <div ng-controller="MainController">
-      <div>{{ error }}</div>
-      <div>{{ countdown }}</div>
-      <h1>{{ message }}</h1>
-      <form name="searchUser" ng-submit="search(username)" >
-        <input type="search" required placeholder="Username to find" ng-model="username" />
-        <input type="submit" value="Search"/>
-      </form>
-      <div ng-include="'userdetails.html'" ng-show="user"></div>
-    </div>
+  <body>
+    <h1>Github Viewer</h1>
+    <div ng-view></div>
   </body>
 </html>
 

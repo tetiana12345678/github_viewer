@@ -4,24 +4,7 @@
   "use strict";
   var app = angular.module('githubViewer');
 
-  var MainController = function(
-      $scope, github, $interval, $log,
-      $anchorScroll, $location) {
-
-    var onUserComplete = function(data){
-      $scope.user = data;
-      github.getRepos($scope.user).then(onRepos, onError);
-    };
-
-    var onError = function(reason){
-      $scope.error = "Some error occured while trying to fetch data";
-    };
-
-    var onRepos = function(data){
-      $scope.repos = data;
-      $location.hash("userDetails");
-      $anchorScroll;
-    };
+  var MainController = function($scope, $interval, $location) {
 
     var decrementCountdown = function() {
       $scope.countdown -= 1;
@@ -37,18 +20,15 @@
     var countdownInterval = null;
 
     $scope.search = function(username){
-      $log.info("Searching for " + username);
-      github.getUser(username).then(onUserComplete, onError);
       if (countdownInterval) {
         $interval.cancel(countdownInterval);
         $scope.countdown = null;
       }
+      $location.path("/user/" + username);
     };
 
     $scope.username = "tetianahogg";
-    $scope.message = "Github Viewer here!";
-    $scope.repoSortOrder = '-stargazers_count';
-    $scope.countdown = 5;
+    $scope.countdown = 20;
     startCountdown();
   };
 
